@@ -1,0 +1,131 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --font-display: "Oswald", "Impact", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.11 0.008 20);
+  --foreground: oklch(0.98 0 0);
+  --surface: oklch(0.15 0.01 20);
+  --surface-elevated: oklch(0.19 0.012 20);
+  --card: oklch(0.15 0.01 20);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.15 0.01 20);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.58 0.22 27);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.22 0.012 20);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.2 0.008 20);
+  --muted-foreground: oklch(0.66 0.01 20);
+  --accent: oklch(0.65 0.24 27);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.58 0.22 27);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.58 0.22 27), oklch(0.45 0.2 25));
+  --gradient-hero: linear-gradient(180deg, oklch(0.08 0.008 20 / 0.4) 0%, oklch(0.08 0.008 20 / 0.85) 100%);
+  --gradient-red: linear-gradient(135deg, oklch(0.65 0.24 27) 0%, oklch(0.4 0.18 25) 100%);
+  --shadow-glow: 0 0 40px oklch(0.58 0.22 27 / 0.35);
+  --shadow-card: 0 20px 50px -20px oklch(0 0 0 / 0.6);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+@utility text-gradient-red {
+  background: var(--gradient-red);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background: oklch(0.15 0.01 20 / 0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid oklch(1 0 0 / 0.08);
+}
+
+@utility glass-red {
+  background: linear-gradient(135deg, oklch(0.58 0.22 27 / 0.08), oklch(0.15 0.01 20 / 0.4));
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.58 0.22 27 / 0.25);
+}
+
+@utility btn-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.58 0.22 27 / 0.5); }
+  50% { box-shadow: 0 0 0 12px oklch(0.58 0.22 27 / 0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility animate-fade-up { animation: fade-up 0.8s ease-out both; }
+@utility animate-fade-in { animation: fade-in 1s ease-out both; }
+@utility animate-pulse-red { animation: pulse-red 2s infinite; }
+@utility animate-marquee { animation: marquee 30s linear infinite; }
