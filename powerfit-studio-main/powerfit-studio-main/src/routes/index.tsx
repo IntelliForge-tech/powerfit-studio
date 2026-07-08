@@ -814,7 +814,7 @@ function Footer() {
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} PowerFit Gym. All rights reserved.</p>
-          <p>Built with discipline & <Users className="inline h-3 w-3 text-primary" /> community.</p>
+          <p>Designed by IntelliForge.</p>
         </div>
       </div>
     </footer>
